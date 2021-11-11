@@ -1,0 +1,51 @@
+<main class="container mt-5">
+  <h1>Shopping Cart</h1>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <LinkTo @route="index">
+        Home
+      </LinkTo>
+    </li>
+    <li class="breadcrumb-item">Shopping Cart</li>
+  </ol>
+
+  {{#each this.cart.itemList as |item|}}
+    <div class="cart-item d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="cart-item-thumbnail">
+          <img src={{ item.image }} alt="">
+        </div>
+        <div class="ml-3 d-flex justify-content-between">
+          <h5>{{ item.name }}</h5>
+          <span class="ms-3">{{ currency item.price sign="£" }}</span>
+        </div>
+      </div>
+      <input
+        type="number"
+        class="ml-auto"
+        value={{ item.count }}
+        {{ on 'input' (fn this.updateItemCount item) }}
+      >
+    </div>
+    <hr>
+  {{/each}}
+
+  <section class="d-flex flex-column text-end mb-5 justify-content-end">
+    <div class="row">
+      <span class="col">Subtotal</span>
+      <span class="col">{{ currency this.subtotal sign="£" }}</span>
+    </div>
+    <div class="row">
+      <span class="col">Tax</span>
+      <span class="col">{{ currency this.tax sign="£" }}</span>
+    </div>
+    <div class="row fw-bold">
+      <span class="col">Total</span>
+      <span class="col">{{ currency this.total sign="£" }}</span>
+    </div>
+  </section>
+  
+  <button type="button" class="btn btn-success">
+    Check out
+  </button>
+</main>

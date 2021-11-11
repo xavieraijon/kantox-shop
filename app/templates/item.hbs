@@ -1,0 +1,18 @@
+<MainContainer>
+    <div class="product item-details-page">
+        <Product::Image @src={{ this.productImage }}/>
+        <Product::Details
+            @showAddCart={{ true }}
+            @id={{ this.model.id }}
+            @image={{ this.model.image }}
+            @name={{ this.model.name }}
+            @price={{ this.model.price }}
+         />
+    </div>
+    <h5 class="mt-5">Features & Description</h5>
+    <ul>
+        {{#each this.model.features as |feature|}}
+            <li>{{feature}}</li>
+        {{/each}}
+    </ul>
+</MainContainer>

@@ -1,0 +1,25 @@
+<div class="product-details">
+    {{!-- Header --}}
+    <section>
+        <h3>{{ @name }}</h3>
+        <div class="text-warning">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star-half-stroke"></i>
+        </div>
+    </section>
+
+    {{!-- Price --}}
+    <section>
+        <i class="text-danger fw-bold">£{{ @price.original }}</i>
+    </section>
+
+    {{#if @showAddCart}}
+        <button class="btn btn-info" type="button" {{ on "click" this.addToCart }}>
+            <i class="fas fa-basket-shopping mr-1"></i>
+            Add to cart
+        </button>        
+    {{/if}}
+</div>
